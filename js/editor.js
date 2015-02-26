@@ -549,7 +549,7 @@ function Springy() {
         });
 
         // add iframe Head informations for default styles
-        $('head', $('#' + _opts.id).get(0).contentWindow.document).append('<link rel="stylesheet" href="/springy/css/editor-area.css" type="text/css">');
+        //$('head', $('#' + _opts.id).get(0).contentWindow.document).append('<link rel="stylesheet" href="/springy/css/editor-area.css" type="text/css">');
 
         // add iframe style informations
         if (_opts.usePageStyles) {

@@ -24,8 +24,11 @@ see https://developer.mozilla.org/en-US/docs/Web/API/document/execCommand#Comman
 
 Demo
 ==========
-Download the package, open the file "/docs/index.htm" and foolow the instruction.
+Local
+Download the package, open the file "/docs/index.htm" and foolow the instruction
 
-https://github.com/webga/SpringyEditor/blob/master/docs/index.htm
+Online
+http://projects.gabfactory.com/SpringyEditor/current/docs/editor_base.htm
 
-online demo will be available asap
+Docs
+http://projects.gabfactory.com/SpringyEditor/current/docs/index.htm
