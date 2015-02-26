@@ -61,9 +61,7 @@
 
         <h2><a name="installation">Package installation</a></h2>
         <p>
-            Download the <a href="https://github.com/webga/SpringyEditor">Sringy Editor package</a> and upload the <b>Springy</b> folder in the root of your website.
-            <br />
-            If the project folder looks like "SpringyEditor-master", rename it to "Springy" and locate the folder to the root of your website
+            Download the <a href="#">Sringy Editor package</a> and upload the <b>Springy</b> folder in the root of your website.
             <br />
             After this step you can continue by reading <a href="#howto">how to</a> or <a href="#requiredfiles">required file</a> sections
         </p>
@@ -86,7 +84,7 @@
         <p>
             To be able to run your Springy Editor instance you need to include some file (css and javascript) in the page.
             <br />
-            In the page header, or wherever it is most convenient for you, add the following files in addition to the jQuery and jQueryUI liraries:
+            In the page header, or wherever it is most convenient for you, add the following files in addition to the jQuery liraries:
             <ul>
                 <li>/springy/res/font-awesome-4.3.0/css/font-awesome.min.css</li>
                 <li>/springy/css/editor.css</li>
@@ -95,20 +93,7 @@
             </ul>
             <br />
             In this example I assume that the editor folder is located into the root of your website (as must be)
-            <br />
-            For the sake of simplicity, I i9ncluthe the jQuery links in this example
             <code class="size14">
-                &lt;!-- jquery --&gt;
-                <br />
-	            &lt;script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"&gt;&lt;/script/&gt;
-                <br />
-	            &lt;script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"&gt;&lt;/script/&gt;
-                <br />
-	            &lt;link type="text/css" href="https://code.jquery.com/ui/1.11.3/themes/blitzer/jquery-ui.css" rel="stylesheet" //&gt;
-                <br />
-                &lt;!-- /jquery --&gt;
-                <br />
-                <br />
                 &lt;link type="text/css" href="/springy/res/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" /&gt;
                 <br />
                 &lt;link type="text/css" href="/springy/css/editor.css" rel="stylesheet" /&gt;
@@ -132,10 +117,6 @@
             <br />
             To use Springy Editor in your page use the following instructions:
         </p>
-
-
-        <div class="top"><a href="#top">page top</a></div>
-
         <p>
             1) Add an iframe to your page and assign an id. In this example we'll use the id <b>cfeditor</b>
             <code>
@@ -143,23 +124,15 @@
             </code>
         </p>
         <p>
-            2) Add the "editor hidden field" We'll use the hidden field id <b>cfeditor_value</b>
+            2) In your script (javascript) just use the following lines of code.
+            <br />
+            We'll use the hidden field id <b>cfeditor_value</b>
             <code>
-                &lt;input type="hidden" id="cfeditor_value" name="cfeditor_value" /input&gt;
+                var springyEditor = new Springy();
+                <br />
+                springyEditor.Create({ id: "cfeditor", fieldId: "cfeditor_value" });
             </code>
         </p>
-        <p>
-            3) In your script (javascript) just use the following lines of code.
-        </p>
-        <pre>&lt;script type="text/javascript"&gt;
-    $(document).ready(function () {
-    	alert("yoyoyo");
-    	var springyEditor = new Springy();
-    	console.log(springyEditor);
-    
-    	springyEditor.Create({ id: "cfeditor", fieldId: "cfeditor_value" });
-    });
-&lt;/script&gt;</pre>
         <p>
             The result will be this:            
             <center>
