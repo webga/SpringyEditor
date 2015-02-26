@@ -1,10 +1,10 @@
 ﻿/*!
-* Springy Editor plugin for jQuery
-* Version 1.0 (22-FEB-2012)
+* Springy Editor, the rich-text editor
+* Version 1.0 (26-FEB-2015)
 * @requires jQuery v1.2.3 or later
 *
-* Examples at: --
-* Copyright (c) 2012 G. Abatematteo
+* Examples at: -- 
+* Copyright (c) 2015 Gabriele Abatematteo
 * Dual licensed under the MIT and GPL licenses:
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
