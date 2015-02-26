@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        body{ font-family: Helvetica; font-size: 16px; color: #444; }
+        p { color: #111; }
+        a { color: #005fff; }
+        
+        h1 a, h2 a, h3 a, h4 a { color: #444; }
+        
+        
+        .page { background-color:#f2f2f2; padding:20px; margin:20px auto; width:980px; border:1px solid #eee; border-radius:4px; }
+        .footer { background-color:#ffffff; padding:20px; margin:0px auto; width:980px; text-align:center; }
+        code, pre { background-color:#ffffff; border: 1px solid #ddd; padding: 10px; margin: 10px; text-align:left; clear:both; display:inline-block; width:96%;}
+        .size14 { font-size:14px; }
+        
+        .top { width:100%; text-align:left; margin-bottom:30px; }
+        .top a {  background: none repeat scroll 0 0 #fff; color: #005fff; font-size: 12px; padding: 2px 5px; text-decoration: none; text-transform: uppercase; }
+        table { background:#ffffff; width:100%; margin-left: 10px; width: 98%; }
+        table td { padding:5px; vertical-align:top; border-bottom:1px solid #bbb; }
+        table td.name { font-weight: bold; border-right: 1px solid #bbb; }
+        table td.br { border-right: 1px solid #bbb; }
+        table td.description { font-weight: normal; }
+
+        .wrapper { margin:20px 0px; border:1px solid #ddd; padding:10px; }
+        .wrapper h2 { margin-left:10px; }
+        .left { float:left; }
+        .right { float:right; }
+        .clear { clear:both; }
+        hr { border:1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <div id="top" class="page">
+        <div>
+            <div class="left">
+                <h1>Springy Editor</h1>
+            </div>
+            <div class="right">
+                <a href="index.htm">Docs</a> | <a href="editor_base.htm">Editor base</a> | <a href="editor_multiple.htm">Editor multiple</a> | 
+            </div>
+            <div class="clear"></div>
+            <hr />
+        </div>
+
+        <p>
+            Turns any iframe into a WYSIWYG rich-content editor.
+        </p>
+
+        <h3>Table of contents</h3>
+        <ul>
+            <li><a href="#installation">Package installation</a></li>
+            <li><a href="#dependencies">Dependencies</a></li>
+            <li><a href="#requiredfiles">Required file (inclusion)</a></li>
+            <li><a href="#howto">How to</a></li>
+            <li><a href="#springyconnectors">SpringyConnectors</a></li>
+            <li><a href="#options">Options</a></li>
+            <li><a href="#examples">Examples</a></li>
+        </ul>
+
+        <h2><a name="installation">Package installation</a></h2>
+        <p>
+            Download the <a href="#">Sringy Editor package</a> and upload the <b>Springy</b> folder in the root of your website.
+            <br />
+            After this step you can continue by reading <a href="#howto">how to</a> or <a href="#requiredfiles">required file</a> sections
+        </p>
+        <div class="top"><a href="#top">page top</a></div>
+
+        <h2><a name="dependencies">Dependencies</a></h2>
+        <p>
+            Javascript enabled in the browser, <a href="http://jquery.com/">jQuery</a> and <a href="http://jqueryui.com/">jQuery UI</a> libraries are required.
+            <br />
+            Until now were not encountered issues with older versions of jquery nor with the recent ones, so you're free to use the jquery library more convenient for you.
+            <br />
+            <br />
+            Run in all modern browsers that supports <a href="https://developer.mozilla.org/en-US/docs/Web/API/document/execCommand#Commands">browser commands</a>.
+            <br />
+            Springy Editor also include <a href="http://fortawesome.github.io/Font-Awesome/">Font-Awesome</a>, available in the package.
+        </p>
+        <div class="top"><a href="#top">page top</a></div>
+
+        <h2><a name="requiredfiles">Required file (inclusion)</a></h2>
+        <p>
+            To be able to run your Springy Editor instance you need to include some file (css and javascript) in the page.
+            <br />
+            In the page header, or wherever it is most convenient for you, add the following files in addition to the jQuery liraries:
+            <ul>
+                <li>/springy/res/font-awesome-4.3.0/css/font-awesome.min.css</li>
+                <li>/springy/css/editor.css</li>
+                <li>/springy/js/editor-connectors.js</li>
+                <li>/springy/js/editor.js</li>            
+            </ul>
+            <br />
+            In this example I assume that the editor folder is located into the root of your website (as must be)
+            <code class="size14">
+                &lt;link type="text/css" href="/springy/res/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" /&gt;
+                <br />
+                &lt;link type="text/css" href="/springy/css/editor.css" rel="stylesheet" /&gt;
+                <br />
+                <br />
+                &lt;script type="text/javascript" src="/springy/js/editor-connectors.js"&gt;&lt;/script&gt;
+                <br />
+                &lt;script type="text/javascript" src="/springy/js/editor.js"&gt;&lt;/script&gt;
+            </code>
+        </p>
+        <div class="top"><a href="#top">page top</a></div>
+
+        <h2><a name="howto">How to</a></h2>
+        <p>
+            Before start let's say that the editor can be loaded with a default text.
+            <br />
+            For example, you are in a scenario where you're going to edit a page or part of it and you need to preload the editor with your content.
+            <br />
+            For this purpose you can set the "field value" for Springy Editor, in the way your content can be loaded at start up.
+            <br />
+            <br />
+            To use Springy Editor in your page use the following instructions:
+        </p>
+        <p>
+            1) Add an iframe to your page and assign an id. In this example we'll use the id <b>cfeditor</b>
+            <code>
+                &lt;iframe src="" id="cfeditor"&gt;&lt;/iframe&gt;
+            </code>
+        </p>
+        <p>
+            2) In your script (javascript) just use the following lines of code.
+            <br />
+            We'll use the hidden field id <b>cfeditor_value</b>
+            <code>
+                var springyEditor = new Springy();
+                <br />
+                springyEditor.Create({ id: "cfeditor", fieldId: "cfeditor_value" });
+            </code>
+        </p>
+        <p>
+            The result will be this:            
+            <center>
+                <img src="editor.jpg" alt="Springy Editor running" />
+            </center>
+        </p>
+        <div class="top"><a href="#top">page top</a></div>
+        
+        <h2><a name="springyconnectors">SpringyConnectors</a></h2>
+        <p>
+            The connectors object is used for the editor components such as image browser, add link  and color picker.
+            <br />
+            A connector allow the editor to open a module, called tool, in a modal dialog by getting it from an url.
+            <br />
+            Each connector (object) have it's configuration parameters as below: 
+        </p>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="name">url</td>
+                <td class="br">required</td>
+                <td class="description">
+                    the resource url where to get the html content for the tool
+                </td>
+            </tr>
+            <tr>
+                <td class="name">buttons</td>
+                <td class="br">required or null</td>
+                <td class="description">
+                    the modal dialog buttons (jquery). NOTE: set it to null if no buttons are required to override the base 
+                </td>
+            </tr>
+            <tr>
+                <td class="name">postUrl</td>
+                <td class="br"></td>
+                <td class="description">
+                    this is used from form actions inside the tool (i.e.: image upload)
+                </td>
+            </tr>
+        </table>
+        <p>
+            The connector items have the following configuration:
+        </p>
+            <pre>
+myConnector: {
+    url: "http://somewhere.go",
+    postUrl: "action.ext"
+    buttons: {
+        "Ok": function () {
+            ..code here...
+        }
+        "Cancel": function () {
+            ..code here...
+        }
+    }
+}</pre>
+
+        <p>
+            The connector configuration file is stored in the package at the path /Springy/js/editor-connectors.js
+            <br />
+            Change the configuration to match your needs.
+        </p>
+        <div class="top"><a href="#top">page top</a></div>
+
+
+        <h2><a name="options">Options</a></h2>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="name">id</td>
+                <td class="description">
+                    The editor id
+                </td>
+            </tr>
+            <tr>
+                <td class="name">fieldId</td>
+                <td class="description">
+                The field or input element id where to store the editor value<br />
+                if you want set the start editor value (content) like when you're going to edit
+                an existing content, you can fill the fieldId value and when the editor is ready
+                it will set the content value, ready to be edited                    
+                </td>
+            </tr>
+            <tr>
+                <td class="name">width</td>
+                <td class="description">
+                    The editor width
+                </td>
+            </tr>
+            <tr>
+                <td class="name">height</td>
+                <td class="description">
+                    The editor height
+                </td>
+            </tr>
+            <tr>
+                <td class="name">autosize</td>
+                <td class="description">
+                    Indicate if the editor grow its heght based on the content. The default value is false
+                </td>
+            </tr>
+            <tr>
+                <td class="name">domain</td>
+                <td class="description">http://yourcooldomain.com/</td>
+            </tr>
+            <tr>
+                <td class="name">usePageStyles</td>
+                <td class="description">
+                    Indicate if the editor font styles used in the page must be used in the editor. The default value is true
+                    <br />
+                    For a detailed list, go to <a href="#pagestylesfontstyles">page styles</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="name">connectors</td>
+                <td class="description">
+                    Of type <a href="">SpringyConnectors</a>
+                    <br />
+                    A connector allow the editor to open a module, such as image browser, add link, color picker, in a modal dialog by getting it from an url
+                </td>
+            </tr>
+            <tr>
+                <td class="name">style</td>
+                <td class="description">
+                    the editor toolbar style. The default value is blue.
+                    <br />
+                    Allowed value are blue,white,tone
+                    <br />
+                    <b>blue</b> provide a blue toolbar
+                    <br />
+                    <b>white</b> provide a white toolbar
+                    <br />
+                    <b>tone</b> provide a transparent background toolbar
+                </td>
+            </tr>
+        </table>
+        <br />
+        <div>
+            <h4><a name="pagestylesfontstyles">Page styles</a></h4>
+            <b>NOT taken from th page</b>
+            <br />
+            background-color (#ffffff)
+            <br />
+            line-height (auto)
+            <br />
+            <br />
+            <b>Taken from page</b>
+            <br />
+            color
+            <br />
+            font-family
+            <br />
+            font-size
+            <br />
+            font-size-adjust
+            <br />
+            font-stretch
+            <br />
+            font-style
+            <br />
+            font-variant
+            <br />
+            font-weight
+            <br />
+            justify-content
+            <br />
+            letter-spacing        
+            <br />
+            <br />
+            <a href="#options">back to options</a>
+        </div>
+        <br />
+        <div class="top"><a href="#top">page top</a></div>
+
+        <h2><a name="examples">Examples</a></h2>
+        <ul>
+            <li><a href="editor_base.htm">Editor base</a></li>
+            <li><a href="editor_multiple.htm">Editor multiple instances</a></li>
+        </ul>
+        <div class="top"><a href="#top">page top</a></div>
+    
+    
+    </div>
+    <div class="footer">
+        Springy Editor by <a href="https://github.com/webga">webga</a> - Fork me on <a href="https://github.com/webga/SpringyEditor">GitHub</a>
+    </div>
+</body>
+</html>
