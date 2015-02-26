@@ -67,6 +67,7 @@ button.cmd[type="button"]
     font-size: 14px;
     height: 30px;
     padding: 5px;
+    margin:2px 0px;
     width: 40px;
 }
 button.cmd[type="button"]:hover
