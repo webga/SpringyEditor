@@ -24,7 +24,7 @@ see https://developer.mozilla.org/en-US/docs/Web/API/document/execCommand#Comman
 
 Demo
 ==========
-Local
+Local (run in a web server)
 Download the package, open the file "/docs/index.htm" and foolow the instruction
 
 Online
