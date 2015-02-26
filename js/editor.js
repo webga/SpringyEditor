@@ -14,6 +14,7 @@
 // TODO: internazionalization and language file for default messages
 // TODO: _defaults loading text, loading image
 // TODO: colorpicker must set text or background color
+// TODO: use window.location.origin for _default.domain
 function Springy() {
 
     // default options
@@ -345,6 +346,14 @@ function Springy() {
     // function: create the editor instance and add it to the page
     this.Create = function (o) {
         _opts = _extend(o, _defaults);
+
+        if (_opts.domain.length == 0) {
+            _opts.domain = window.location.origin;
+        }
+        if (_opts.domain.substr(-1) == '/') {
+            _opts.domain = _opts.domain.substr(0, _opts.domain.length - 1);
+        }
+
         _toolbarId = _opts.id + "_toolbar";
 
         // prepare the editor in page
@@ -369,21 +378,21 @@ function Springy() {
         // toolbar size
         $('#' + _toolbarId).css({ width: $('#' + _opts.id).width() });
         // load buttons
-        _callSync(_opts.domain + "springy/toolbar.htm", function (data) {
+        _callSync(_opts.domain + "/springy/toolbar.htm", function (data) {
             $('#' + _toolbarId).html(data);
         });
         // toolbar style
         if (_opts.style.length > 0 && typeof (_opts.style) === "string") {
             $('#' + _toolbarId + " > .rte_toolbar").addClass(_opts.style);
         }
-        
+
         // add content to the editor if exists any
         _iframe = $('#' + _opts.id).contents().get(0);
-		if ($('#' + _opts.fieldId) && $('#' + _opts.fieldId).val()) {
-			_iframe.open();
-			_iframe.write($('#' + _opts.fieldId).val());
-			_iframe.close();
-		}
+        if ($('#' + _opts.fieldId) && $('#' + _opts.fieldId).val()) {
+            _iframe.open();
+            _iframe.write($('#' + _opts.fieldId).val());
+            _iframe.close();
+        }
         _iframe.designMode = 'on';
 
         // if editor auto size is enabled, attach the event on keyup to the iframe
