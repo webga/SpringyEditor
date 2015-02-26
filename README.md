@@ -24,4 +24,8 @@ see https://developer.mozilla.org/en-US/docs/Web/API/document/execCommand#Comman
 
 Demo
 ==========
-soon available
+open the file /docs/index.htm and foolow the instruction.
+
+https://github.com/webga/SpringyEditor/blob/master/docs/index.htm
+
+online demo will be available asap
