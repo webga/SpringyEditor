@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Springy Editor :: Multiple instances example</title>
+    <style type="text/css">
+        body{ font-family: Helvetica; font-size: 16px; color: #444; }
+        p { color: #111; }
+        a { color: #005fff; }
+        
+        h1 a, h2 a, h3 a{ color: #444; }
+        
+        
+        .page { background-color:#f2f2f2; padding:20px; margin:20px auto; width:980px; border:1px solid #eee; border-radius:4px; }
+        .footer { background-color:#ffffff; padding:20px; margin:0px auto; width:980px; text-align:center; }
+        code, pre { background-color:#ffffff; border: 1px solid #ddd; padding: 10px; margin: 10px; text-align:left; clear:both; display:inline-block; width:96%;}
+        .size14 { font-size:14px; }
+        
+        .top { width:100%; text-align:left; margin-bottom:30px; }
+        .top a {  background: none repeat scroll 0 0 #fff; color: #005fff; font-size: 12px; padding: 2px 5px; text-decoration: none; text-transform: uppercase; }
+        table { background:#ffffff; width:100%; margin-left: 10px; width: 98%; }
+        table td { padding:5px; vertical-align:top; border-bottom:1px solid #bbb; }
+        table td.name { font-weight: bold; border-right: 1px solid #bbb; }
+        table td.br { border-right: 1px solid #bbb; }
+        table td.description { font-weight: normal; }
+        
+        .wrapper { margin:20px 0px; border:1px solid #ddd; padding:10px; }
+        .wrapper h2 { margin-left:10px; }
+        .left { float:left; }
+        .right { float:right; }
+        .clear { clear:both; }
+        hr { border:1px solid #ccc; }
+    </style>
+
+    <!-- jquery -->
+    <link type="text/css" href="/springy/docs/jquery/jquery-ui-1.11.3/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="/springy/docs/jquery/jquery-ui-1.11.3/external/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/springy/docs/jquery/jquery-ui-1.11.3/jquery-ui.js"></script>
+    <!-- /jquery -->
+
+    <link type="text/css" href="/springy/res/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link type="text/css" href="/springy/css/editor.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="/springy/js/editor-connectors.js"></script>
+    <script type="text/javascript" src="/springy/js/editor.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var springyEditor1 = new Springy();
+            springyEditor1.Create({ id: "cfeditor1", fieldId: "cfeditor1_value" });
+
+            var springyEditor2 = new Springy();
+            springyEditor2.Create({ id: "cfeditor2", fieldId: "cfeditor2_value", style: "white" });
+
+            var springyEditor3 = new Springy();
+            springyEditor3.Create({ id: "cfeditor3", fieldId: "cfeditor3_value", style: "tone" });
+
+            var springyEditor3 = new Springy();
+            springyEditor3.Create({ id: "cfeditor4", fieldId: "cfeditor3_value", style: "tone", autosize: true });
+        });        
+    </script>
+
+</head>
+<body>
+    <div id="top" class="page">
+        <div>
+            <div class="left">
+                <h1>Springy Editor test page</h1>
+            </div>
+            <div class="right">
+                <a href="index.htm">Docs</a> | <a href="editor_base.htm">Editor base</a> | <a href="editor_multiple.htm">Editor multiple</a> | 
+            </div>
+            <div class="clear"></div>
+            <hr />
+        </div>
+
+        <h4>Choose an option</h4>
+        <ul>
+            <li><a href="#default">Default skin</a></li>
+            <li><a href="#white">White skin</a></li>
+            <li><a href="#tone">Tone skin</a></li>
+            <li><a href="#autosize">Autosize</a></li>
+        </ul>
+        <div class="wrapper">
+            <h2><a name="default">Default skin</a></h2>
+
+            <input type="hidden" id="cfeditor1_value" name="cfeditor1_value" value="l lorem ipsum è un testo segnaposto utilizzato da grafici, designer, programmatori e tipografi a modo riempitivo per bozzetti e prove grafiche[1]. È un testo privo di senso, composto da parole in lingua latina, riprese pseudocasualmente da uno scritto di Cicerone del 45 a.C, a volte alterate con l'inserzione di passaggi ironici. La caratteristica principale è data dal fatto che offre una distribuzione delle lettere uniforme, apparendo come un normale blocco di testo leggibile.<br /><br />Il testo è stato utilizzato per la prima volta nel 1500 da un anonimo tipografo per mostrare i propri caratteri; da allora è diventato lo standard dell'industria tipografica. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni '60, con la diffusione dei fogli di caratteri trasferibili Letraset e successivamente dai più disparati programmi di grafica. La sua funzione lo avvicina al testo etaoin shrdlu un tempo usato per provare le Linotype[2].<br /><br />In informatica è usato molto frequentemente come testo riempitivo nelle prove grafiche di pagine web e come dati fittizi nella prova di funzionamento dei database. L'uso di questo espediente, per riempire spazi altrimenti vuoti (spesso in attesa dei dati definitivi), è molto efficace grazie soprattutto all'alternanza di parole lunghe e brevi, punteggiatura e paragrafi. In questo modo viene simulato con sufficiente verosimiglianza l'impatto grafico di un testo reale, in modo particolare per quanto riguarda l'impatto estetico." />
+            <iframe id="cfeditor1" src=""></iframe>
+        </div>
+        <div class="top"><a href="#top">page top</a></div>
+
+        <div class="wrapper">
+            <h2><a name="white">White skin</a></h2>
+
+            <input type="hidden" id="cfeditor2_value" name="cfeditor2_value" value="l lorem ipsum è un testo segnaposto utilizzato da grafici, designer, programmatori e tipografi a modo riempitivo per bozzetti e prove grafiche[1]. È un testo privo di senso, composto da parole in lingua latina, riprese pseudocasualmente da uno scritto di Cicerone del 45 a.C, a volte alterate con l'inserzione di passaggi ironici. La caratteristica principale è data dal fatto che offre una distribuzione delle lettere uniforme, apparendo come un normale blocco di testo leggibile.<br /><br />Il testo è stato utilizzato per la prima volta nel 1500 da un anonimo tipografo per mostrare i propri caratteri; da allora è diventato lo standard dell'industria tipografica. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni '60, con la diffusione dei fogli di caratteri trasferibili Letraset e successivamente dai più disparati programmi di grafica. La sua funzione lo avvicina al testo etaoin shrdlu un tempo usato per provare le Linotype[2].<br /><br />In informatica è usato molto frequentemente come testo riempitivo nelle prove grafiche di pagine web e come dati fittizi nella prova di funzionamento dei database. L'uso di questo espediente, per riempire spazi altrimenti vuoti (spesso in attesa dei dati definitivi), è molto efficace grazie soprattutto all'alternanza di parole lunghe e brevi, punteggiatura e paragrafi. In questo modo viene simulato con sufficiente verosimiglianza l'impatto grafico di un testo reale, in modo particolare per quanto riguarda l'impatto estetico." />
+            <iframe id="cfeditor2" src=""></iframe>
+        </div>
+        <div class="top"><a href="#top">page top</a></div>
+        
+        <div class="wrapper">
+            <h2><a name="tone">Tone skin</a></h2>
+
+            <input type="hidden" id="cfeditor3_value" name="cfeditor3_value" value="l lorem ipsum è un testo segnaposto utilizzato da grafici, designer, programmatori e tipografi a modo riempitivo per bozzetti e prove grafiche[1]. È un testo privo di senso, composto da parole in lingua latina, riprese pseudocasualmente da uno scritto di Cicerone del 45 a.C, a volte alterate con l'inserzione di passaggi ironici. La caratteristica principale è data dal fatto che offre una distribuzione delle lettere uniforme, apparendo come un normale blocco di testo leggibile.<br /><br />Il testo è stato utilizzato per la prima volta nel 1500 da un anonimo tipografo per mostrare i propri caratteri; da allora è diventato lo standard dell'industria tipografica. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni '60, con la diffusione dei fogli di caratteri trasferibili Letraset e successivamente dai più disparati programmi di grafica. La sua funzione lo avvicina al testo etaoin shrdlu un tempo usato per provare le Linotype[2].<br /><br />In informatica è usato molto frequentemente come testo riempitivo nelle prove grafiche di pagine web e come dati fittizi nella prova di funzionamento dei database. L'uso di questo espediente, per riempire spazi altrimenti vuoti (spesso in attesa dei dati definitivi), è molto efficace grazie soprattutto all'alternanza di parole lunghe e brevi, punteggiatura e paragrafi. In questo modo viene simulato con sufficiente verosimiglianza l'impatto grafico di un testo reale, in modo particolare per quanto riguarda l'impatto estetico." />
+            <iframe id="cfeditor3" src=""></iframe>
+        </div>
+        
+        <div class="wrapper">
+            <h2><a name="autosize">Autosize</a></h2>
+            <input type="hidden" id="cfeditor4_value" name="cfeditor4_value" value="l lorem ipsum è un testo segnaposto utilizzato da grafici, designer, programmatori e tipografi a modo riempitivo per bozzetti e prove grafiche[1]. È un testo privo di senso, composto da parole in lingua latina, riprese pseudocasualmente da uno scritto di Cicerone del 45 a.C, a volte alterate con l'inserzione di passaggi ironici. La caratteristica principale è data dal fatto che offre una distribuzione delle lettere uniforme, apparendo come un normale blocco di testo leggibile.<br /><br />Il testo è stato utilizzato per la prima volta nel 1500 da un anonimo tipografo per mostrare i propri caratteri; da allora è diventato lo standard dell'industria tipografica. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni '60, con la diffusione dei fogli di caratteri trasferibili Letraset e successivamente dai più disparati programmi di grafica. La sua funzione lo avvicina al testo etaoin shrdlu un tempo usato per provare le Linotype[2].<br /><br />In informatica è usato molto frequentemente come testo riempitivo nelle prove grafiche di pagine web e come dati fittizi nella prova di funzionamento dei database. L'uso di questo espediente, per riempire spazi altrimenti vuoti (spesso in attesa dei dati definitivi), è molto efficace grazie soprattutto all'alternanza di parole lunghe e brevi, punteggiatura e paragrafi. In questo modo viene simulato con sufficiente verosimiglianza l'impatto grafico di un testo reale, in modo particolare per quanto riguarda l'impatto estetico." />
+            <iframe id="cfeditor4" src=""></iframe>
+        </div>
+        <div class="top"><a href="#top">page top</a></div>
+    </div>
+    <div class="footer">
+        Springy Editor by <a href="https://github.com/webga">webga</a> - Fork me on <a href="https://github.com/webga/SpringyEditor">GitHub</a>
+    </div>
+</body>
+</html>

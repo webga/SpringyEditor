@@ -1,0 +1,157 @@
+<script type="text/javascript">
+    function bindUploader(formId, input, img) {
+        $.ajaxSetup({
+            jsonp: null,
+            jsonpCallback: null
+        });
+        var options = {
+            //target: '#output2',   // target element(s) to be updated with server response 
+            beforeSubmit: function () {
+                $("#preview" + img).attr("src", "/Content/images/loading.gif");
+                //$("#status").attr("class", "loading");
+                //$("#errors").html('');
+            },
+            uploadProgress: function (event, position, total, percentComplete) {
+                //$("#status").attr("class", "loading");
+                //var percentVal = percentComplete + '%';
+            },
+            complete: function (xhr, status) {
+                //$("#status").attr("class", "transparent");
+
+                if (status === 'error' || !xhr.responseText) {
+                    alert("ERROR");
+                }
+                else { }
+            },
+            success: function (responseText, statusText, xhr, $form) {
+                if (responseText.Success) {
+                    $("#" + img).attr("src", responseText.ImageUrl);
+                    $("#" + img + "_field").val(responseText.ImageUrl);
+                }
+                else {
+                    alert("File non caricato -> " + responseText.ImageName + ": " + responseText.Message);
+                }
+            },
+            error: function (e) {
+                if (e.status === 'error') {
+                    //alert('***** error *****');
+                }
+            },
+            resetForm: true,
+            clearForm: true,
+            dataType: 'json'
+            // other available options: 
+            //url:       url         // override for form's 'action' attribute 
+            //type:      type        // 'get' or 'post', override for form's 'method' attribute 
+            //dataType:  null        // 'xml', 'script', or 'json' (expected server response type) 
+            //clearForm: true        // clear all form fields after successful submit 
+            //resetForm: true        // reset the form after successful submit 
+
+            // $.ajax options can be used here too, for example: 
+            //timeout:   3000 
+        };
+
+        $('#' + input).on('change', function () {
+            $("form#" + formId).ajaxSubmit(options);
+        });
+        /*
+        $("#browse" + img).unbind("click").bind("click", function () {
+            $("#" + input).click();
+            return false;
+        });
+        */
+    }
+
+    function updateSize() {
+        if ($("#rte_imagewidth").val() != "" && $("#rte_imageheight").val() != "") {
+            $("#rte_image").css("width", $("#rte_imagewidth").val());
+            $("#rte_image").css("height", $("#rte_imageheight").val());
+        }
+        return false;
+    }
+
+    function updateAlignment() {
+        $("#rte_image").attr("align", $("#rte_imagealignment").val());
+
+    }
+
+    $(document).ready(function () {
+        bindUploader("image_uploader", "imagefile", "rte_image");
+    });
+</script>
+<div>
+    <table>
+        <tr>
+            <td style="vertical-align: top">
+                Scegli file:
+            </td>
+            <td style="vertical-align: top" colspan="2">
+                <form name="image_uploader" method="post" id="image_uploader" enctype="multipart/form-data" action="/xman/uploadhandler/image.html">    
+                <input type="file" id="imagefile" name="file" class="valid" />
+                    <!--div style="clear:both; margin-bottom:10px;"></div-->
+                </form>
+                <!--input type="button" class="cmd" value="" style="visibility: hidden" id="Button1"></input-->
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top">
+                Anteprima:
+            </td>
+            <td style="vertical-align: top">
+                <div id="image_ifrme" contenteditable="true" style="border: 1px solid #acacac; overflow: scroll; height: 300px; width: 400px;">
+                    <img id="rte_image" alt="carica un'immagine" src="" /> Lorem Ipsum &egrave; un <b>testo segnaposto</b> utilizzato nel settore della tipografia e della stampa. Lorem Ipsum &egrave; considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assembl&ograve; per preparare un testo campione. &egrave; sopravvissuto non solo a pi&ugrave; di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e pi&ugrave; recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum.
+                </div>
+                <input id="rte_image_field" type="text" value="" name="Image" />
+
+                <!--iframe id="image_ifrme" name="image_ifrme" src="" style="width:300px; border:1px solid #acacac;" frameborder="0"></iframe-->
+            </td>
+            <td style="vertical-align: top">
+                <table id="rte_imagesettings">
+                    <tr>
+                        <td style="vertical-align: top">
+                            Width
+                        </td>
+                        <td style="vertical-align: top">
+                            <input type="text" id="rte_imagewidth" value="" style="width: 50px"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top">
+                            Height
+                        </td>
+                        <td style="vertical-align: top">
+                            <input type="text" id="rte_imageheight" value="" style="width: 50px"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top">
+                            Alignment
+                        </td>
+                        <td style="vertical-align: top">
+                            <select id="rte_imagealignment" onchange="updateAlignment();">
+                                <option value="" selected="selected"></option>
+                                <option value="left">Left</option>
+                                <option value="absBottom">Abs Bottom</option>
+                                <option value="absMiddle">Abs Middle</option>
+                                <option value="baseline">Baseline</option>
+                                <option value="bottom">Bottom</option>
+                                <option value="middle">Middle</option>
+                                <option value="right">Right</option>
+                                <option value="textTop">Text Top</option>
+                                <option value="top">Top</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top" colspan="2">
+                            <button type="change_image_size" name="change_image_size" onclick="updateSize();"
+                                class="ui-state-default ui-corner-all">
+                                cambia impostazioni</button>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <input type="button" class="cmd" value="" style="visibility: hidden" id="rte_createimage"></input>
+</div>
